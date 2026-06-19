@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>nextdesign | Tableware Design Studio</title>
     <style>
-        /* --- 共通スタイル --- */
+        /* 全体共通のスタイル */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -19,7 +19,7 @@
             line-height: 1.6;
         }
 
-        /* ヘッダー・ナビゲーション */
+        /* ヘッダーのレイアウト */
         header {
             display: flex;
             justify-content: space-between;
@@ -83,17 +83,18 @@
         }
 
         .lang-btn.active {
-            color: #e30613; /* ロゴの赤 */
+            color: #e30613; /* ロゴの赤色 */
             border-bottom: 2px solid #e30613;
         }
 
-        /* メインコンテンツ */
+        /* メインエリア */
         main {
             padding: 60px 10%;
             max-width: 1200px;
             margin: 0 auto;
         }
 
+        /* ページの表示・非表示の基本ルール */
         .page {
             display: none;
         }
@@ -102,16 +103,18 @@
             display: block;
         }
 
-        /* 言語表示コントロール */
+        /* 英語とイタリア語の出し分け制御 */
         .lang-en, .lang-it {
             display: none;
         }
         
         body.active-en .lang-en { display: block; }
         body.active-en span.lang-en { display: inline; }
+        body.active-en h2.lang-en { display: block; }
         
         body.active-it .lang-it { display: block; }
         body.active-it span.lang-it { display: inline; }
+        body.active-it h2.lang-it { display: block; }
 
         h2 {
             font-size: 26px;
@@ -122,7 +125,7 @@
             padding-bottom: 10px;
         }
 
-        /* --- About ページ --- */
+        /* --- About --- */
         .about-content {
             display: flex;
             gap: 50px;
@@ -150,55 +153,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        /* --- Portfolio ページ (6枚グリッド) --- */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
-        }
-
-        .portfolio-item {
-            background-color: #fff;
-            border: 1px solid #f0f0f0;
-            padding: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-            transition: transform 0.3s ease;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .portfolio-image-wrapper {
-            width: 100%;
-            height: 280px;
-            overflow: hidden;
-            margin-bottom: 15px;
-            background-color: #f7f7f7;
-        }
-
-        .portfolio-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .portfolio-item h3 {
-            font-size: 16px;
-            margin-bottom: 5px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .portfolio-item p {
-            font-size: 13px;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* --- Contact ページ --- */
+        /* --- Contact --- */
         .contact-container {
             max-width: 600px;
             margin: 0 auto;
@@ -264,9 +219,7 @@
         }
     </style>
 </head>
-<body class="active-en">
-
-    <header>
+<body class="active-en"> <header>
         <div class="logo-container">
             <img src="logo.jpg" alt="nextdesign">
         </div>
@@ -276,9 +229,9 @@
                     <span class="lang-en">About</span>
                     <span class="lang-it">Chi Siamo</span>
                 </a>
-                <a onclick="switchPage('portfolio')" id="nav-portfolio">
-                    <span class="lang-en">Portfolio</span>
-                    <span class="lang-it">Portfolio</span>
+                <a onclick="switchPage('works')" id="nav-works">
+                    <span class="lang-en">Works</span>
+                    <span class="lang-it">Progetti</span>
                 </a>
                 <a onclick="switchPage('contact')" id="nav-contact">
                     <span class="lang-en">Contact</span>
@@ -302,29 +255,100 @@
             <div class="about-content">
                 <div class="about-text">
                     <div class="lang-en">
-                        <p>Based in Italy, <strong>nextdesign</strong> is a contemporary tableware design studio specialized in western tableware.</p>
-                        <p>We blend traditional European elegance with modern functionality, creating exquisite porcelain and ceramic concepts for an international clientele, including partners in Hong Kong and the United States.</p>
+                        <p>Welcome to nextdesign. We are a professional design studio specializing in Western tableware design, creating elegant and contemporary concepts for global clients. Our passion lies in combining aesthetic beauty with everyday functionality, ensuring every piece tells a unique story on the dining table.</p>
                     </div>
                     <div class="lang-it">
-                        <p>Con sede in Italia, <strong>nextdesign</strong> è uno studio di design contemporaneo specializzato nella progettazione di articoli da tavola occidentali.</p>
-                        <p>Fondiamo l'eleganza tradizionale europea con la funzionalità moderna, creando raffinati concetti in porcellana e ceramica per una clientela internazionale, inclusi partner a Hong Kong e negli Stati Uniti.</p>
+                        <p>Benvenuti in nextdesign. Siamo uno studio di design professionale specializzato nel design di stoviglie e articoli da tavola occidentali, creando concetti eleganti e contemporanei per clienti globali. La nostra passione risiede nel combinare la bellezza estetica con la funzionalità quotidiana, assicurando che ogni pezzo racconti una storia unica sulla tavola da pranzo.</p>
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="image1.jpg" alt="Tableware Studio">
+                    <img src="image.jpg" alt="Tableware Studio">
                 </div>
             </div>
         </section>
 
-        <section id="portfolio" class="page">
-            <h2 class="lang-en">Portfolio</h2>
-            <h2 class="lang-it">Portfolio</h2>
+        <section id="works" class="page">
+            <h2 class="lang-en">Past Works</h2>
+            <h2 class="lang-it">Progetti Passati</h2>
             
-            <div class="portfolio-grid" id="portfolio-container">
+            <div class="portfolio-container" style="max-width: 800px; margin: 0 auto; position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <div class="slideshow-inner" style="position: relative; width: 100%; padding-top: 100%; background-color: #f9f9f9;">
+                    <img id="slideshow-image" src="image1.jpg" alt="Tableware Design" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.6s ease-in-out; opacity: 1;">
                 </div>
+
+                <button onclick="changeSlide(-1)" style="position: absolute; top: 50%; left: 15px; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 20px; font-weight: bold; color: #333; transition: background 0.3s; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10;">&lt;</button>
+                <button onclick="changeSlide(1)" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 20px; font-weight: bold; color: #333; transition: background 0.3s; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10;">&gt;</button>
+
+                <div id="slide-dots" style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10;">
+                    </div>
+            </div>
+
+            <script>
+                // 使用する画像のリスト（image1〜image7の全7枚に対応）
+                const images = [
+                    'image1.jpg',
+                    'image2.jpg',
+                    'image3.jpg',
+                    'image4.jpg',
+                    'image5.jpg',
+                    'image6.jpg',
+                    'image7.jpg'
+                ];
+                
+                let currentSlideIndex = 0;
+                const slideImageElement = document.getElementById('slideshow-image');
+                const dotsContainer = document.getElementById('slide-dots');
+
+                // インジケーター（ドット）の自動生成
+                images.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.style.width = '10px';
+                    dot.style.height = '10px';
+                    dot.style.borderRadius = '50%';
+                    dot.style.backgroundColor = index === 0 ? '#e30613' : 'rgba(255,255,255,0.6)';
+                    dot.style.cursor = 'pointer';
+                    dot.style.boxShadow = '0 1px 3px rgba(0,0,0,0.3)';
+                    dot.onclick = () => jumpToSlide(index);
+                    dotsContainer.appendChild(dot);
+                });
+
+                function updateSlide() {
+                    slideImageElement.style.opacity = 0;
+                    setTimeout(() => {
+                        slideImageElement.src = images[currentSlideIndex];
+                        slideImageElement.style.opacity = 1;
+                        
+                        const dots = dotsContainer.children;
+                        for (let i = 0; i < dots.length; i++) {
+                            dots[i].style.backgroundColor = i === currentSlideIndex ? '#e30613' : 'rgba(255,255,255,0.6)';
+                        }
+                    }, 200);
+                }
+
+                function changeSlide(direction) {
+                    currentSlideIndex += direction;
+                    if (currentSlideIndex >= images.length) currentSlideIndex = 0;
+                    if (currentSlideIndex < 0) currentSlideIndex = images.length - 1;
+                    updateSlide();
+                    resetTimer();
+                }
+
+                function jumpToSlide(index) {
+                    currentSlideIndex = index;
+                    updateSlide();
+                    resetTimer();
+                }
+
+                let autoSlideTimer = setInterval(() => { changeSlide(1); }, 4000);
+
+                function resetTimer() {
+                    clearInterval(autoSlideTimer);
+                    autoSlideTimer = setInterval(() => { changeSlide(1); }, 4000);
+                }
+            </script>
         </section>
 
- <section id="contact" class="page">
+        <section id="contact" class="page">
             <h2 class="lang-en">Contact</h2>
             <h2 class="lang-it">Contatti</h2>
             
@@ -340,7 +364,9 @@
                 
                 <form action="https://formsubmit.co/next.tada@gmail.com" method="POST">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://nextdesign-studio.github.io"> <div class="form-group">
+                    <input type="hidden" name="_next" value="https://nextdesign-studio.github.io/nextdesign/">
+
+                    <div class="form-group">
                         <label>
                             <span class="lang-en">Name / Company</span>
                             <span class="lang-it">Nome / Azienda</span>
@@ -374,78 +400,30 @@
     </footer>
 
     <script>
-        // 1. ポートフォリオのデータ定義（6枚の .jpg 画像）
-        const portfolioData = [
-            { src: 'image1.jpg', titleEn: 'Citrus Fresh Series', titleIt: 'Serie Freschezza Agrumata', client: 'International' },
-            { src: 'image2.jpg', titleEn: 'Wildflower Meadow', titleIt: 'Prato di Fiori Selvatici', client: 'United States' },
-            { src: 'image3.jpg', titleEn: 'Mediterranean Brushstroke', titleIt: 'Pennellata Mediterranea', client: 'Europe' },
-            { src: 'image4.jpg', titleEn: 'Orto e Pasta Collection', titleIt: 'Collezione Orto e Pasta', client: 'Italy' },
-            { src: 'image5.jpg', titleEn: 'Monochrome Graphic Lines', titleIt: 'Linee Grafiche Monocromatiche', client: 'Hong Kong' },
-            { src: 'image6.jpg', titleEn: 'Tropical Botanical Paradise', titleIt: 'Paradiso Botanico Tropicale', client: 'International' }
-        ];
-
-        // 2. 配列をランダムにシャッフルする関数
-        function shuffleArray(array) {
-            const shuffled = [...array];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
-            return shuffled;
-        }
-
-        // 3. ポートフォリオ画面を生成して表示する関数
-        function renderPortfolio() {
-            const container = document.getElementById('portfolio-container');
-            container.innerHTML = ''; 
-            
-            // データをランダムに並び替え
-            const randomizedData = shuffleArray(portfolioData);
-
-            // 画面にカードを追加
-            randomizedData.forEach(item => {
-                const itemHtml = `
-                    <div class="portfolio-item">
-                        <div class="portfolio-image-wrapper">
-                            <img src="${item.src}" alt="${item.titleEn}">
-                        </div>
-                        <h3 class="lang-en">${item.titleEn}</h3>
-                        <h3 class="lang-it">${item.titleIt}</h3>
-                        <p>Client: ${item.client}</p>
-                    </div>
-                `;
-                container.innerHTML += itemHtml;
-            });
-        }
-
-        // 4. ページ切り替え関数
+        // ページを切り替える関数（About, Works, Contact）
         function switchPage(pageId) {
+            // 1. 一度すべてのセクションから active クラスを消して非表示にする
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
 
+            // 2. ナビゲーションの文字から太字デザイン（activeクラス）を全て消す
             const navLinks = document.querySelectorAll('nav a');
             navLinks.forEach(link => link.classList.remove('active'));
 
+            // 3. クリックされたページとメニューだけを表示・太字にする
             document.getElementById(pageId).classList.add('active');
             document.getElementById('nav-' + pageId).classList.add('active');
-
-            // ポートフォリオページを開いた時にシャッフルを実行
-            if (pageId === 'portfolio') {
-                renderPortfolio();
-            }
         }
 
-        // 5. 言語切り替え関数
+        // 言語を切り替える関数（EN / IT）
         function switchLanguage(lang) {
+            // bodyのクラスを書き換え
             document.body.className = 'active-' + lang;
+
+            // ボタンのアクティブ状態の見た目を切り替え
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('btn-' + lang).classList.add('active');
         }
-
-        // ページの初期化
-        window.addEventListener('DOMContentLoaded', () => {
-            renderPortfolio();
-        });
     </script>
 
 </body>
